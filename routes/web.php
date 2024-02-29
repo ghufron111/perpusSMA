@@ -67,6 +67,8 @@ Route::middleware(['auth', 'role:2'])->group(function () {
     Route::post('/buku/pinjam/{id}', [RentController::class, 'pinjam_buku'])->name('client.pinjam.buku');
     Route::post('/pinjambuku/kembali/{id}', [RentController::class, 'kembali_buku'])->name('client.kembali.buku');
     Route::get('/pinjambuku/hapus', [RentController::class, 'hapus_histori_buku'])->name('client.hapus.buku');
+
+    Route::get('{file_path}', [BookController::class, 'baca']);
 });
 
 Route::middleware('only_guest')->group(function(){
