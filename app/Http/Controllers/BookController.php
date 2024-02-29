@@ -248,4 +248,17 @@ class BookController extends Controller
         return redirect('buku');
     }
 
+    public function baca($file_path){
+        // Path ke file PDF yang akan ditampilkan
+        $pathToFile = storage_path('app/public/' . $file_path);
+
+        // Periksa apakah file ada
+        if (!file_exists($pathToFile)) {
+            abort(404);
+        }
+
+        // Mengirimkan file PDF sebagai respons
+        return response()->file($pathToFile);
+    }
+
 }
